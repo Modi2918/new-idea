@@ -1,4 +1,7 @@
 {
+    "name": "modi2918/invenza-license-server",
+    "description": "License server plugin for Invenza",
+    "license": "proprietary",
     "require": {
         "razorpay/razorpay": "^2.9"
     },
