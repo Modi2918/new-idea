@@ -37,22 +37,18 @@ spl_autoload_register(
 
 		$len = strlen( $prefix );
 		if ( strncmp( $prefix, $class, $len ) !== 0 ) {
-				return;
+			return;
 		}
 
 		$relative_class = substr( $class, $len );
-		$parts          = explode( '\\', $relative_class );
+		$parts = explode( '\\', $relative_class );
 
 		if ( ! isset( $parts[0] ) || '' === $parts[0] ) {
 			return;
 		}
 
-		// Map all directory parts to lowercase to prevent case sensitivity issues on Linux.
-		$file_name = array_pop( $parts );
-		$parts     = array_map( 'strtolower', $parts );
-		$parts[]   = $file_name;
-
-		$file = $base_dir . implode( '/', $parts ) . '.php';
+		// Preserve case per PSR-4 and build path using DIRECTORY_SEPARATOR for portability.
+		$file = $base_dir . implode( DIRECTORY_SEPARATOR, $parts ) . '.php';
 
 		if ( file_exists( $file ) ) {
 			require_once $file;
