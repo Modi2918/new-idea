@@ -1,0 +1,183 @@
+/* Invenza Pro Landing Page Custom Design System & CSS Animations */
+:root {
+	--brand-50: #eff6ff;
+	--brand-100: #dbeafe;
+	--brand-500: #3b82f6;
+	--brand-600: #2563eb;
+	--brand-700: #1d4ed8;
+	--brand-900: #1e3a8a;
+}
+
+html {
+	margin-top: 0 !important;
+	scroll-behavior: smooth;
+}
+
+body {
+	padding-top: 0 !important;
+	overflow-x: hidden;
+}
+
+.gradient-text {
+	background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #9333ea 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Explicit Button Colors & Hover Fixes */
+#pricing .btn-popular {
+	background-color: #ffffff !important;
+	color: #1d4ed8 !important;
+	border: 1px solid #ffffff !important;
+}
+#pricing .btn-popular:hover {
+	background-color: #f8fafc !important;
+	color: #1e40af !important;
+}
+
+#pricing .btn-standard {
+	background-color: #2563eb !important;
+	color: #ffffff !important;
+	border: 1px solid #2563eb !important;
+}
+#pricing .btn-standard:hover {
+	background-color: #1d4ed8 !important;
+	color: #ffffff !important;
+}
+
+#pricing .btn-free {
+	background-color: #334155 !important;
+	color: #ffffff !important;
+	border: 1px solid #475569 !important;
+}
+#pricing .btn-free:hover {
+	background-color: #475569 !important;
+	color: #ffffff !important;
+}
+
+/* Clean Table Design Fix */
+#compare .compare-table-wrapper {
+	border-radius: 1.25rem;
+	overflow: hidden;
+	border: 1px solid #cbd5e1;
+	background: #ffffff;
+}
+
+#compare table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#compare th, #compare td {
+	border-right: 1px solid #e2e8f0;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+#compare th:last-child, #compare td:last-child {
+	border-right: none;
+}
+
+#compare tr:last-child td {
+	border-bottom: none;
+}
+
+/* Glassmorphism Classes */
+.glass-card {
+	background: rgba(255, 255, 255, 0.85);
+	backdrop-filter: blur(16px);
+	border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-card-dark {
+	background: rgba(15, 23, 42, 0.85);
+	backdrop-filter: blur(16px);
+	border: 1px solid rgba(51, 65, 85, 0.8);
+}
+
+/* CSS Scroll Reveal Animations */
+.reveal {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+@keyframes float {
+	0% { transform: translateY(0px); }
+	50% { transform: translateY(-10px); }
+	100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+	0%, 100% { opacity: 0.4; }
+	50% { opacity: 0.7; }
+}
+
+.animate-float {
+	animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+	animation: pulse-glow 8s ease-in-out infinite;
+}
+
+/* WP Admin Bar Offset Adjustments */
+.admin-bar nav {
+	top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar nav {
+		top: 46px;
+	}
+}
+
+/* Coupon Modal Input & Alert Styles */
+#modalCouponCode {
+	letter-spacing: 0.05em;
+	font-weight: 700;
+	color: #1e293b;
+	text-transform: uppercase;
+}
+
+/* ─── Coupon Applied Success Banner ───────────────────────────── */
+@keyframes couponPopIn {
+	0%   { opacity: 0; transform: translateY(-10px) scale(0.95); }
+	60%  { opacity: 1; transform: translateY(2px) scale(1.02); }
+	100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes checkBounce {
+	0%   { opacity: 0; transform: scale(0); }
+	60%  { transform: scale(1.25); }
+	80%  { transform: scale(0.9); }
+	100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseRing {
+	0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+	70%  { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+	100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
+#modalCouponSuccess {
+	/* Override any Tailwind hidden — visibility controlled by JS */
+}
+
+#modalCouponCheckIcon {
+	animation: checkBounce 0.5s 0.15s cubic-bezier(0.34,1.56,0.64,1) both,
+	           pulseRing 1s 0.6s ease-out both;
+}
+
+#modalFormError {
+	background-color: #fef2f2 !important;
+	border-color: #fecaca !important;
+	color: #b91c1c !important;
+	font-weight: 600;
+	border-radius: 0.75rem;
+}

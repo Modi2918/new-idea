@@ -1,0 +1,397 @@
+/* FormCraft License Server Admin Stylesheet */
+
+:root {
+	/* Colors */
+	--fcac-server-bg: #f1f5f9;
+	--fcac-server-surface: #ffffff;
+	--fcac-server-primary: #2563eb;
+	--fcac-server-primary-hover: #1d4ed8;
+	--fcac-server-text: #0f172a;
+	--fcac-server-muted: #64748b;
+	--fcac-server-border: #e2e8f0;
+	
+	/* Status Colors */
+	--fcac-server-success: #10b981;
+	--fcac-server-danger: #ef4444;
+	--fcac-server-warning: #f59e0b;
+	--fcac-server-info: #0ea5e9;
+
+	/* Shadows */
+	--fcac-server-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--fcac-server-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+	--fcac-server-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	
+	/* Layout & Spacing */
+	--fcac-server-radius: 8px;
+	--fcac-server-radius-lg: 12px;
+	--fcac-server-sidebar-width: 260px;
+	--fcac-server-header-height: 70px;
+	--fcac-server-spacing-sm: 8px;
+	--fcac-server-spacing-md: 16px;
+	--fcac-server-spacing-lg: 24px;
+	--fcac-server-spacing-xl: 32px;
+}
+
+[data-theme="dark"] {
+	--fcac-server-bg: #0f172a;
+	--fcac-server-surface: #1e293b;
+	--fcac-server-primary: #3b82f6;
+	--fcac-server-primary-hover: #60a5fa;
+	--fcac-server-text: #f8fafc;
+	--fcac-server-muted: #94a3b8;
+	--fcac-server-border: #334155;
+	
+	--fcac-server-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+	--fcac-server-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+	--fcac-server-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Wrapper */
+.fcac-server-admin-wrap {
+	margin: 20px 20px 20px 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	color: var(--fcac-server-text);
+	background: var(--fcac-server-bg);
+	border-radius: var(--fcac-server-radius-lg);
+	overflow: hidden;
+	box-shadow: var(--fcac-server-shadow-lg);
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - 80px);
+	box-sizing: border-box;
+}
+
+.fcac-server-admin-wrap * {
+	box-sizing: border-box;
+}
+
+/* Header */
+.fcac-server-header {
+	height: var(--fcac-server-header-height);
+	background: var(--fcac-server-surface);
+	border-bottom: 1px solid var(--fcac-server-border);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 var(--fcac-server-spacing-xl);
+	flex-shrink: 0;
+}
+
+.fcac-server-header-title {
+	font-size: 20px;
+	font-weight: 700;
+	margin: 0;
+	color: var(--fcac-server-text);
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.fcac-server-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+/* Dark Mode Toggle */
+.fcac-server-theme-toggle {
+	background: transparent;
+	border: 1px solid var(--fcac-server-border);
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: var(--fcac-server-muted);
+	transition: all 0.2s ease;
+}
+
+.fcac-server-theme-toggle:hover {
+	color: var(--fcac-server-text);
+	background: var(--fcac-server-bg);
+}
+
+.fcac-server-theme-toggle svg {
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
+}
+
+/* Body Layout */
+.fcac-server-body {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+/* Sidebar */
+.fcac-server-sidebar {
+	width: var(--fcac-server-sidebar-width);
+	background: var(--fcac-server-surface);
+	border-right: 1px solid var(--fcac-server-border);
+	display: flex;
+	flex-direction: column;
+	padding: var(--fcac-server-spacing-md) 0;
+	flex-shrink: 0;
+}
+
+.fcac-server-nav-item {
+	display: flex;
+	align-items: center;
+	padding: 12px var(--fcac-server-spacing-xl);
+	color: var(--fcac-server-muted);
+	text-decoration: none;
+	font-weight: 500;
+	transition: all 0.2s ease;
+	border-left: 3px solid transparent;
+	font-size: 14px;
+}
+
+.fcac-server-nav-item:hover {
+	color: var(--fcac-server-text);
+	background: var(--fcac-server-bg);
+}
+
+.fcac-server-nav-item.active {
+	color: var(--fcac-server-primary);
+	background: rgba(37, 99, 235, 0.05);
+	border-left-color: var(--fcac-server-primary);
+	font-weight: 600;
+}
+[data-theme="dark"] .fcac-server-nav-item.active {
+	background: rgba(59, 130, 246, 0.1);
+}
+
+/* Content Area */
+.fcac-server-content {
+	flex: 1;
+	padding: var(--fcac-server-spacing-xl);
+	overflow-y: auto;
+	background: var(--fcac-server-bg);
+}
+
+/* Cards */
+.fcac-server-card {
+	background: var(--fcac-server-surface);
+	border: 1px solid var(--fcac-server-border);
+	border-radius: var(--fcac-server-radius-lg);
+	padding: var(--fcac-server-spacing-lg);
+	box-shadow: var(--fcac-server-shadow-sm);
+	margin-bottom: var(--fcac-server-spacing-lg);
+}
+
+.fcac-server-card-header {
+	margin-bottom: var(--fcac-server-spacing-lg);
+	padding-bottom: var(--fcac-server-spacing-md);
+	border-bottom: 1px solid var(--fcac-server-border);
+}
+
+.fcac-server-card-title {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0;
+	color: var(--fcac-server-text);
+}
+
+.fcac-server-card-subtitle {
+	color: var(--fcac-server-muted);
+	font-size: 14px;
+	margin: 4px 0 0 0;
+}
+
+/* Metrics Row */
+.fcac-server-metrics-row {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: var(--fcac-server-spacing-md);
+	margin-bottom: var(--fcac-server-spacing-xl);
+}
+
+.fcac-server-metric-card {
+	background: var(--fcac-server-surface);
+	border: 1px solid var(--fcac-server-border);
+	border-radius: var(--fcac-server-radius);
+	padding: var(--fcac-server-spacing-md);
+	display: flex;
+	flex-direction: column;
+	border-left-width: 4px;
+	border-left-style: solid;
+}
+
+.fcac-server-metric-title {
+	font-size: 12px;
+	text-transform: uppercase;
+	color: var(--fcac-server-muted);
+	font-weight: 600;
+	margin-bottom: 5px;
+	letter-spacing: 0.05em;
+}
+
+.fcac-server-metric-value {
+	font-size: 26px;
+	font-weight: 800;
+	color: var(--fcac-server-text);
+}
+
+/* Forms & Inputs */
+.fcac-server-form-row {
+	margin-bottom: var(--fcac-server-spacing-md);
+}
+
+.fcac-server-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 8px;
+	color: var(--fcac-server-text);
+	font-size: 14px;
+}
+
+.fcac-server-input,
+.fcac-server-select,
+.fcac-server-textarea {
+	width: 100%;
+	max-width: 100%;
+	padding: 10px 14px;
+	background-color: var(--fcac-server-surface) !important;
+	color: var(--fcac-server-text) !important;
+	border: 1px solid var(--fcac-server-border) !important;
+	border-radius: var(--fcac-server-radius);
+	font-family: inherit;
+	font-size: 14px;
+	box-shadow: none;
+	transition: all 0.2s ease;
+}
+
+.fcac-server-input:focus,
+.fcac-server-select:focus,
+.fcac-server-textarea:focus {
+	border-color: var(--fcac-server-primary) !important;
+	box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2) !important;
+	outline: none;
+}
+
+/* Buttons */
+.fcac-server-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 10px 20px;
+	border-radius: var(--fcac-server-radius);
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	border: none;
+}
+
+.fcac-server-btn-primary {
+	background: var(--fcac-server-primary);
+	color: #ffffff;
+}
+
+.fcac-server-btn-primary:hover {
+	background: var(--fcac-server-primary-hover);
+}
+
+/* Tables */
+.fcac-server-table-container {
+	border: 1px solid var(--fcac-server-border);
+	border-radius: var(--fcac-server-radius);
+	overflow: hidden;
+}
+
+.fcac-server-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--fcac-server-surface);
+	font-size: 13px;
+	text-align: left;
+}
+
+.fcac-server-table th {
+	background: var(--fcac-server-bg);
+	color: var(--fcac-server-muted);
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 12px;
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--fcac-server-border);
+}
+
+.fcac-server-table td {
+	padding: 16px;
+	border-bottom: 1px solid var(--fcac-server-border);
+	color: var(--fcac-server-text);
+	vertical-align: middle;
+}
+
+.fcac-server-table tr:last-child td {
+	border-bottom: none;
+}
+
+.fcac-server-table tr:hover td {
+	background: rgba(0, 0, 0, 0.02);
+}
+[data-theme="dark"] .fcac-server-table tr:hover td {
+	background: rgba(255, 255, 255, 0.02);
+}
+
+/* Status Badges */
+.fcac-server-badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.fcac-server-badge-active {
+	background: rgba(16, 185, 129, 0.1);
+	color: var(--fcac-server-success);
+}
+
+.fcac-server-badge-suspended {
+	background: rgba(239, 68, 68, 0.1);
+	color: var(--fcac-server-danger);
+}
+
+.fcac-server-badge-info {
+	background: rgba(14, 165, 233, 0.1);
+	color: var(--fcac-server-info);
+}
+
+.fcac-server-badge-neutral {
+	background: var(--fcac-server-bg);
+	color: var(--fcac-server-muted);
+}
+
+/* Helpers */
+.fcac-server-text-code {
+	font-family: monospace;
+	background: var(--fcac-server-bg);
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 12px;
+	color: var(--fcac-server-primary);
+}
+
+.fcac-server-action-link {
+	color: var(--fcac-server-muted);
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 12px;
+	margin-right: 12px;
+	transition: color 0.2s ease;
+}
+.fcac-server-action-link:hover {
+	color: var(--fcac-server-primary);
+}
+.fcac-server-action-link.danger:hover {
+	color: var(--fcac-server-danger);
+}
