@@ -1,4 +1,7 @@
 {
+    "name": "modi2918/new-idea",
+    "description": "WordPress security and license management plugins",
+    "license": "proprietary",
     "require": {
         "razorpay/razorpay": "^2.9"
     },
