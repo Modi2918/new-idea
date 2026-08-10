@@ -1,0 +1,5 @@
+wp-config.php
+wp-content/uploads/
+*.log
+.DS_Store
+Thumbs.db
